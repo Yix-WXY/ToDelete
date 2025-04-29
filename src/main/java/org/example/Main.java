@@ -5,7 +5,7 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
         int[] nums = {3, 1, 5, 2, 1, 4};
-        bubbleSort(nums);
+        selectionSort(nums);
 
         System.out.println(Arrays.toString(nums));
     }
@@ -28,7 +28,7 @@ public class Main {
 
     112
 
-    O(n * log n)
+    O(n*n) , O(n * log n)
      */
     public static void bubbleSort(int[] nums) {
         for (int i = 0; i < nums.length - 1; i++) {
@@ -39,6 +39,29 @@ public class Main {
                     nums[j + 1] = temp;
                 }
             }
+        }
+    }
+
+    /*
+    315214
+    135214
+    1 35214
+    11 5234
+    112 534
+    1123 54
+    112345
+     */
+    public static void selectionSort(int[] nums) {
+        for (int i = 0; i < nums.length - 1; i++) {
+            int minIdx = i;
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[j] < nums[minIdx]) {
+                    minIdx = j;
+                }
+            }
+            int temp = nums[i];
+            nums[i] = nums[minIdx];
+            nums[minIdx] = temp;
         }
     }
 }
